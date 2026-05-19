@@ -22,7 +22,7 @@ let mapleader = " "
 
 " Plugins
 set nerdtree
-set clipboard+=unnamed
+set clipboard+=unnamedplus
 set clipboard+=ideaput
 set relativenumber
 set ignorecase
