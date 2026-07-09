@@ -42,6 +42,11 @@ config.keys = {
       end
     end),
   },
+  {
+    key = 'v',
+    mods = 'CTRL',
+    action = action.PasteFrom 'Clipboard',
+  },
 }
  
 return config
