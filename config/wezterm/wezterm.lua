@@ -48,5 +48,23 @@ config.keys = {
     action = action.PasteFrom 'Clipboard',
   },
 }
+
+wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
+  local pane = tab.active_pane
+  local cwd_uri = pane.current_working_dir
+
+  local folder_name = "wezterm"
+  if cwd_uri then
+    -- cwd_uri is a Url object (or string on older versions)
+    local cwd = cwd_uri.file_path or tostring(cwd_uri)
+    -- strip trailing slash then grab last path component
+    cwd = cwd:gsub("/$", "")
+    folder_name = cwd:match("([^/]+)$") or folder_name
+  end
+
+  return {
+    { Text = ' ' .. folder_name .. ' ' },
+  }
+end)
  
 return config
